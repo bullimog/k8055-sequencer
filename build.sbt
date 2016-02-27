@@ -1,4 +1,4 @@
-name := """k8055"""
+name := """k8055-sequencer"""
 
 version := "1.0-SNAPSHOT"
 

@@ -4,10 +4,8 @@ import connectors.{Configuration, SequenceConfigIO, K8055}
 import model.Step._
 import model.{Step, Sequence, SequenceState}
 
-object SequenceManager extends SequenceManager with DeviceManager{
+object SequenceManager extends SequenceManager{
   override val sequenceConfigIO = SequenceConfigIO
-  override val deviceManager = DeviceManager
-  override val monitorManager = MonitorManager
   override val configuration = Configuration
   override val k8055Board = K8055
 }
@@ -15,8 +13,6 @@ object SequenceManager extends SequenceManager with DeviceManager{
 trait SequenceManager{
 
   val sequenceConfigIO:SequenceConfigIO
-  val deviceManager:DeviceManager
-  val monitorManager:MonitorManager
   val configuration:Configuration
   val k8055Board:K8055
 
@@ -27,25 +23,25 @@ trait SequenceManager{
     })
   }
 
-  def getStep(stepId:String):Option[Step]={
+  def getStep(stepId:Int):Option[Step]={
     val sequence:Sequence = getSequence
     sequence.steps.find(step => step.id == stepId)
   }
 
   
-  def readAndPopulateSteps(sequence: Sequence):Sequence = {
-    val populatedSteps = sequence.steps.map(device =>
-      device.deviceType match {
-        case ANALOGUE_IN => deviceManager.readAndPopulateAnalogueIn(device)
-        case ANALOGUE_OUT => deviceManager.readAndPopulateAnalogueOut(device)
-        case DIGITAL_IN => deviceManager.readAndPopulateDigitalIn(device)
-        case DIGITAL_OUT => deviceManager.readAndPopulateDigitalOut(device)
-        case MONITOR => deviceManager.readAndPopulateMonitor(device)
-        case _ => device
-      }
-    )
-    sequence.copy(steps = populatedSteps)
-  }
+//  def readAndPopulateSteps(sequence: Sequence):Sequence = {
+//    val populatedSteps = sequence.steps.map(device =>
+//      device.deviceType match {
+//        case ANALOGUE_IN => deviceManager.readAndPopulateAnalogueIn(device)
+//        case ANALOGUE_OUT => deviceManager.readAndPopulateAnalogueOut(device)
+//        case DIGITAL_IN => deviceManager.readAndPopulateDigitalIn(device)
+//        case DIGITAL_OUT => deviceManager.readAndPopulateDigitalOut(device)
+//        case MONITOR => deviceManager.readAndPopulateMonitor(device)
+//        case _ => device
+//      }
+//    )
+//    sequence.copy(steps = populatedSteps)
+//  }
 
 
   def upsertDevice(step: Step):Boolean = {
@@ -127,7 +123,7 @@ trait SequenceManager{
 
 
   def deleteStep(step: Step):Boolean = {deleteStep(step.id)}
-  def deleteStep(step: String):Boolean = {
+  def deleteStep(step: Int):Boolean = {
     val sequence = getSequence
     val steps:List[Step] = sequence.steps
     val stepRemoved = steps.filter(d => d.id != step)
