@@ -2,7 +2,7 @@ package controllers
 
 import connectors.FakeK8055
 import manager.DeviceManager
-import model.Step$
+import model.Step
 
 
 object FakeDeviceManager extends DeviceManager{

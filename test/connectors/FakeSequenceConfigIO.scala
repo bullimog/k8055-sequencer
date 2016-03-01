@@ -1,7 +1,7 @@
 package connectors
 
 import model.Step._
-import model.{Step$, Sequence$}
+import model.{Step$, Sequence}
 
 
 object FakeSequenceConfigIO extends SequenceConfigIO{
