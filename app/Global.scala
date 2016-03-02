@@ -9,14 +9,14 @@ object Global extends GlobalSettings {
 
   lazy val actorRef:ActorRef = system.actorOf(Props(new SequencerActor()), name = "monitorActor")
 
-  private def startMonitors() = {
+  private def startSequencer() = {
     val tickInterval  = new FiniteDuration(1, TimeUnit.SECONDS)
     val cancellable = system.scheduler.schedule(tickInterval, tickInterval, actorRef, "tick") //initialDelay, delay, Actor, Message
   }
-  val system: ActorSystem = ActorSystem("K8055")
+  val system: ActorSystem = ActorSystem("K8055-Sequencer")
   override def onStart(app: Application) {
 //    Logger.info("Application has started")
-    startMonitors()
+    startSequencer()
   }
 
   override def onStop(app: Application) {

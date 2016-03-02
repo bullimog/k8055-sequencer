@@ -3,45 +3,45 @@
   "description" : "My First Sequence",
   "steps" : [ {
     "id" : 1,
-    "device" : 104,
+    "device" : "AI-1",
     "eventType" : "SET_VALUE",
-    "target" : 41.0
+    "value" : 41
   }, {
     "id" : 2,
-    "device" : 2,
+    "device" : "DO-1",
     "eventType" : "ON"
   }, {
     "id" : 3,
-    "device" : 1,
+    "device" : "AO-1",
     "eventType" : "SET_VALUE",
-    "target" : 41.0
+    "value" : 41
   }, {
     "id" : 4,
-    "device" : 4,
+    "device" : "AI-1",
     "eventType" : "WAIT_RISING",
-    "duration" : 20
+    "value" : 20
   }, {
     "id" : 5,
-    "device" : 104,
+    "device" : "MO-1",
     "eventType" : "SET_VALUE",
-    "target" : 68.0
+    "value" : 68
   }, {
     "id" : 6,
-    "device" : 4,
+    "device" : "AI-1",
     "eventType" : "WAIT_RISING",
-    "duration" : 20
+    "value" : 20
   }, {
     "id" : 7,
-    "device" : 104,
+    "device" : "MO-1",
     "eventType" : "OFF"
   }, {
     "id" : 8,
-    "device" : 2,
+    "device" : "DO-1",
     "eventType" : "OFF"
   }, {
     "id" : 9,
-    "device" : 3,
+    "device" : "AO-1",
     "eventType" : "SET_VALUE",
-    "target" : 0.0
+    "value" : 0
   } ]
 }
