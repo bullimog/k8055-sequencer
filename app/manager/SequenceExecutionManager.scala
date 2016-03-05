@@ -11,12 +11,12 @@ object SequenceExecutionManager extends SequenceExecutionManager{
 
 trait SequenceExecutionManager {
   val sequenceManager: SequenceManager
-  val START_STEP = 1
+  val START_STEP = 0
   var currentStep = START_STEP
   var running = false
 
   def runSequence() = {
-    println("#### runSequence")
+//    println("#### runSequence")
     val oStep: Option[Step] = sequenceManager.getStep(currentStep)
     oStep.fold({
       currentStep = START_STEP

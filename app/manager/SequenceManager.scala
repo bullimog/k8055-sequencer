@@ -66,11 +66,12 @@ trait SequenceManager{
   private def stepToReadableStep(step: Step):Future[ReadableStep] = {
     for {device <- K8055.getDevice(step.deviceId)}
       yield{
-        ReadableStep(step.id, step.deviceId, device.description , step.decode, step.value.map(v=>v.toString))
+        ReadableStep(step.id, step.deviceId, device.description , step.decode,
+          step.value.map(v=>v.toString+device.units.getOrElse("")))
       }
   }
 
-  //TODO: This is generic, could go in utils class?...
+  //TODO: This is generic, could go in utils package?...
   private def listFuture2FutureList[T](lf: List[Future[T]]): Future[List[T]] =
     lf.foldRight(Future(Nil:List[T]))((list, listItem) =>
     for{
