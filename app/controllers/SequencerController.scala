@@ -4,14 +4,16 @@ import manager.SequenceManager
 import play.api.mvc._
 import play.api.libs.json._
 import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
 
 class SequencerController extends Controller {
 
   def sequence() = Action.async {
 
     implicit request => {
-      val json = Json.toJson(SequenceManager.getSequence)
-      Future.successful(Ok(json))
+      SequenceManager.getReadableSequence.map(rs =>
+        Ok(Json.toJson(rs).toString())
+      )
     }
   }
 

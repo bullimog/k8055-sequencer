@@ -1,8 +1,13 @@
 package manager
 
+import akka.actor.FSM.Failure
 import connectors.{Configuration, SequenceConfigIO, K8055}
 import model.Step._
-import model.{Step, Sequence, SequenceState}
+import model._
+
+import scala.concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+import scala.util.Success
 
 object SequenceManager extends SequenceManager{
   override val sequenceConfigIO = SequenceConfigIO
@@ -22,6 +27,10 @@ trait SequenceManager{
     oSequence.fold(Sequence("No Sequence", "Error", List()))({
       sequence => sequence
     })
+  }
+
+  def getReadableSequence:Future[ReadableSequence] = {
+    sequenceToReadableSequence(getSequence)
   }
 
   def getStep(stepId:Int):Option[Step]={
@@ -52,6 +61,32 @@ trait SequenceManager{
 
   def putSequence(sequence: Sequence):Boolean = {
     sequenceConfigIO.writeSequenceToFile(configuration.filename, sequence)
+  }
+
+  private def stepToReadableStep(step: Step):Future[ReadableStep] = {
+    for {device <- K8055.getDevice(step.deviceId)}
+      yield{
+        ReadableStep(step.id, step.deviceId, device.description , step.decode, step.value.map(v=>v.toString))
+      }
+  }
+
+  //TODO: This is generic, could go in utils class?...
+  private def listFuture2FutureList[T](lf: List[Future[T]]): Future[List[T]] =
+    lf.foldRight(Future(Nil:List[T]))((list, listItem) =>
+    for{
+      _list <- list
+      _listItem <- listItem
+    } yield _list::_listItem)
+
+
+
+  def sequenceToReadableSequence(sequence: Sequence):Future[ReadableSequence] = {
+    val futureSteps:List[Future[ReadableStep]] =
+      for (step <- sequence.steps)
+      yield stepToReadableStep(step)
+
+    listFuture2FutureList(futureSteps).map(steps=> ReadableSequence(sequence.description, steps,
+      SequenceExecutionManager.currentStep, SequenceExecutionManager.running))
   }
 
 }

@@ -27,8 +27,8 @@ trait SequenceExecutionManager {
   def performStep(step: Step): Unit = {
     println("#### performStep")
     step.eventType match {
-      case (EventType.ON) => K8055.patchDeviceState(DeviceState(step.device, Some(true), None)); currentStep += 1 //Digital Out
-      case (EventType.OFF) => K8055.patchDeviceState(DeviceState(step.device, Some(true), None)); currentStep += 1 //Digital/Analogue Out/Monitor
+      case (EventType.ON) => K8055.patchDeviceState(DeviceState(step.deviceId, Some(true), None)); currentStep += 1 //Digital Out
+      case (EventType.OFF) => K8055.patchDeviceState(DeviceState(step.deviceId, Some(true), None)); currentStep += 1 //Digital/Analogue Out/Monitor
       case (EventType.SET_VALUE) => currentStep += 1
       case (EventType.WAIT_RISING) => currentStep += 1
       case (EventType.WAIT_FALLING) => currentStep += 1

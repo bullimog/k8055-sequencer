@@ -2,11 +2,11 @@ package connectors
 
 
 import connectors.Configuration._
-import model.DeviceState
+import model.{Device, DeviceState}
 import play.Logger
 import play.api.http.HttpVerbs
 import play.api.http.Status._
-import play.api.libs.json.Json
+import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
 import play.api.libs.ws.{WS, WSRequest, WSResponse}
 import play.mvc.Http.HeaderNames._
 import play.mvc.Http.MimeTypes._
@@ -53,4 +53,29 @@ trait K8055{
       }
     }
   }
+
+  //TODO: Need to tidy this up - default devices are not ideal
+  def getDevice(deviceId: String):Future[Device]  = {
+     doGet(k8055Host + k8055Device + deviceId).fold(Future(Device("0", "Bad Device 1",0, 0))) {
+      theFuture => theFuture.map { wsresponse =>           // get the WSResponse out of the Future using map
+        wsresponse.status match {                          // match on the response status code (int)
+          case OK => parseDevice(wsresponse.body).getOrElse(Device("0", "Bad Device 2",0, 0))
+          case NOT_FOUND => Device("0", "Bad Device 3",0, 0)
+          case _ => Device("0", "Bad Device 4",0, 0)
+        }
+      }
+    }
+  }
+
+  def parseDevice(jsonSource:String):Option[Device] = {
+    val json: JsValue = Json.parse(jsonSource)
+    json.validate[Device] match {
+      case s: JsSuccess[Device] => Some(s.getOrElse{
+        Logger.error(s"K8055Connector.parseDevice: parsed Json, but it was empty: $jsonSource")
+        Device("0", "Bad Device 5",0, 0)
+      })
+      case e: JsError => None
+    }
+  }
+
 }
