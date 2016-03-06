@@ -14,6 +14,7 @@ object SequenceManager extends SequenceManager{
   override val configuration = Configuration
   override val sequenceExecutionManager = SequenceExecutionManager
   override val k8055Board = K8055
+  override val timer = Timer
 }
 
 trait SequenceManager{
@@ -22,6 +23,7 @@ trait SequenceManager{
   val configuration:Configuration
   val k8055Board:K8055
   val sequenceExecutionManager : SequenceExecutionManager
+  val timer:Timer
 
 
   def getSequence:Sequence = {
@@ -36,7 +38,7 @@ trait SequenceManager{
   }
 
   def getSequenceState:SequenceState = {
-    SequenceState(sequenceExecutionManager.running, sequenceExecutionManager.currentStep)
+    SequenceState(sequenceExecutionManager.running, sequenceExecutionManager.currentStep, timer.remainingTime())
   }
 
   def getStep(stepId:Int):Option[Step]={
@@ -70,11 +72,16 @@ trait SequenceManager{
   }
 
   private def stepToReadableStep(step: Step):Future[ReadableStep] = {
-    for {device <- K8055.getDevice(step.deviceId)}
-      yield{
-        ReadableStep(step.id, step.deviceId, device.description , step.decode,
-          step.value.map(v=>v.toString+device.units.getOrElse("")))
-      }
+    if(step.eventType == EventType.WAIT_TIME){
+      Future(ReadableStep(step.id, step.deviceId, "Timer", step.decode, Some(step.value.toString)))
+    }
+    else {
+      for {device <- K8055.getDevice(step.deviceId)}
+        yield {
+          ReadableStep(step.id, step.deviceId, device.description, step.decode,
+            step.value.map(v => v.toString + device.units.getOrElse("")))
+        }
+    }
   }
 
   //TODO: This is generic, could go in utils package?...

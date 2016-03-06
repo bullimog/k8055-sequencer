@@ -31,7 +31,7 @@ trait SequenceExecutionManager {
       case (EventType.SET_VALUE) => currentStep += 1
       case (EventType.WAIT_RISING) => currentStep += 1
       case (EventType.WAIT_FALLING) => currentStep += 1
-      case (EventType.WAIT_TIME) => runWaitTime(step) //Any
+      case (EventType.WAIT_TIME) => runWaitTime(step)
       case (EventType.WAIT_ON) => currentStep += 1
       case (EventType.WAIT_OFF) => currentStep += 1
       case (EventType.WAIT_COUNT) => currentStep += 1
@@ -42,12 +42,14 @@ trait SequenceExecutionManager {
 
   def runWaitTime(step:Step): Unit = {
     if(timer.waitingFor(step.id)) { //already running
-      if(timer.finished(step.id)){currentStep += 1; timer.step = -1}
+      if(timer.finished(step.id)) {
+        currentStep += 1
+        timer.step = -1
+      }
     }
     else{ //set up a Timer
-      step.value match {
-        case Some (duration) => { timer.setTimer( step.id, step.value.getOrElse(0))}
-        case _ => Logger.warn("No duration specified,  can't wait for: " + step)
+      step.value.fold(Logger.warn("No duration specified,  can't wait for: " + step)) {
+        duration => timer.setTimer( step.id, step.value.getOrElse(0))
       }
     }
   }
