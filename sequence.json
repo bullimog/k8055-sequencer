@@ -17,9 +17,9 @@
     "value" : 41
   }, {
     "id" : 4,
-    "device" : "AI-1",
-    "eventType" : "WAIT_RISING",
-    "value" : 64
+    "device" : "TI-1",
+    "eventType" : "WAIT_TIME",
+    "value" : 10
   }, {
     "id" : 5,
     "device" : "MO-1",

@@ -12,6 +12,7 @@ import scala.util.Success
 object SequenceManager extends SequenceManager{
   override val sequenceConfigIO = SequenceConfigIO
   override val configuration = Configuration
+  override val sequenceExecutionManager = SequenceExecutionManager
   override val k8055Board = K8055
 }
 
@@ -20,6 +21,7 @@ trait SequenceManager{
   val sequenceConfigIO:SequenceConfigIO
   val configuration:Configuration
   val k8055Board:K8055
+  val sequenceExecutionManager : SequenceExecutionManager
 
 
   def getSequence:Sequence = {
@@ -31,6 +33,10 @@ trait SequenceManager{
 
   def getReadableSequence:Future[ReadableSequence] = {
     sequenceToReadableSequence(getSequence)
+  }
+
+  def getSequenceState:SequenceState = {
+    SequenceState(sequenceExecutionManager.running, sequenceExecutionManager.currentStep)
   }
 
   def getStep(stepId:Int):Option[Step]={
@@ -86,8 +92,7 @@ trait SequenceManager{
       for (step <- sequence.steps)
       yield stepToReadableStep(step)
 
-    listFuture2FutureList(futureSteps).map(steps=> ReadableSequence(sequence.description, steps,
-      SequenceExecutionManager.currentStep, SequenceExecutionManager.running))
+    listFuture2FutureList(futureSteps).map(steps=> ReadableSequence(sequence.description, steps))
   }
 
 }

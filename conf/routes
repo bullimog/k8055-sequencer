@@ -4,7 +4,13 @@
 
 # Home page
 GET     /                           controllers.SequencerController.sequence
-GET     /sequencerState             controllers.SequencerController.sequence
+GET     /sequence                   controllers.SequencerController.sequence
+GET     /sequencerState             controllers.SequencerController.sequencerState
+GET     /start                      controllers.SequencerController.start
+GET     /stop                       controllers.SequencerController.stop
+GET     /reset                      controllers.SequencerController.reset
+GET     /next                       controllers.SequencerController.next
+GET     /previous                   controllers.SequencerController.previous
 
 
 # Map static resources from the /public folder to the /assets URL path
