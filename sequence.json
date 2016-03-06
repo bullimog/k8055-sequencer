@@ -3,7 +3,7 @@
   "description" : "My First Sequence",
   "steps" : [ {
     "id" : 1,
-    "device" : "AI-1",
+    "device" : "AX-1",
     "eventType" : "SET_VALUE",
     "value" : 41
   }, {

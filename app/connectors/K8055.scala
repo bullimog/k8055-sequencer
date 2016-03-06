@@ -56,12 +56,12 @@ trait K8055{
 
   //TODO: Need to tidy this up - default devices are not ideal
   def getDevice(deviceId: String):Future[Device]  = {
-     doGet(k8055Host + k8055Device + deviceId).fold(Future(Device("0", "Bad Device 1",0, 0))) {
+     doGet(k8055Host + k8055Device + deviceId).fold(Future(Device("0", "No response from server",0, 0))) {
       theFuture => theFuture.map { wsresponse =>           // get the WSResponse out of the Future using map
         wsresponse.status match {                          // match on the response status code (int)
-          case OK => parseDevice(wsresponse.body).getOrElse(Device("0", "Bad Device 2",0, 0))
-          case NOT_FOUND => Device("0", "Bad Device 3",0, 0)
-          case _ => Device("0", "Bad Device 4",0, 0)
+          case OK => parseDevice(wsresponse.body).getOrElse(Device("0", "Device incompatible",0, 0))
+          case NOT_FOUND => Device("0", "*Not found*",0, 0)
+          case _ => Device("0", "Error - unknown device type",0, 0)
         }
       }
     }
