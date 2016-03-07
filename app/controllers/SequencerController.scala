@@ -38,21 +38,22 @@ class SequencerController extends Controller {
 
   def reset() = Action.async {
     implicit request => {
-      SequenceExecutionManager.currentStep = 1
+      SequenceExecutionManager.currentStep = 0
+      SequenceExecutionManager.running = false
       Future.successful(Ok("Ok"))
     }
   }
 
   def next() = Action.async {
     implicit request => {
-      SequenceExecutionManager.currentStep += 1
+      SequenceExecutionManager.incStep()
       Future.successful(Ok("Ok"))
     }
   }
 
   def previous() = Action.async {
     implicit request => {
-      SequenceExecutionManager.currentStep -= 1
+      SequenceExecutionManager.decStep()
       Future.successful(Ok("Ok"))
     }
   }

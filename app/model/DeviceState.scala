@@ -3,6 +3,7 @@ package model
 import play.api.libs.functional.syntax._
 import play.api.libs.json.{JsPath, Json, Reads}
 
+//Used to post data to K8055
 case class DeviceState(id:String, digitalState:Option[Boolean]=None, analogueState:Option[Int]=None)
 
 object DeviceState {
