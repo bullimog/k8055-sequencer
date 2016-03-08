@@ -14,7 +14,7 @@
     "id" : 3,
     "device" : "AO-1",
     "eventType" : "SET_VALUE",
-    "value" : 41
+    "value" : 104
   }, {
     "id" : 4,
     "device" : "TI-1",
@@ -24,12 +24,12 @@
     "id" : 5,
     "device" : "MO-1",
     "eventType" : "SET_VALUE",
-    "value" : 68
+    "value" : 173
   }, {
     "id" : 6,
     "device" : "AI-1",
     "eventType" : "WAIT_RISING",
-    "value" : 68
+    "value" : 173
   }, {
     "id" : 7,
     "device" : "MO-1",

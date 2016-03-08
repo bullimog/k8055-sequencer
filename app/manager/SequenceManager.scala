@@ -47,7 +47,7 @@ trait SequenceManager{
   }
 
 
-  def upsertDevice(step: Step):Boolean = {
+  def upsertStep(step: Step):Boolean = {
     val sequence = getSequence
     val steps:List[Step] = sequence.steps
     val stepRemoved = steps.filter(d => d.id != step.id)
@@ -73,15 +73,39 @@ trait SequenceManager{
 
   private def stepToReadableStep(step: Step):Future[ReadableStep] = {
     if(step.eventType == EventType.WAIT_TIME){
-      Future(ReadableStep(step.id, step.deviceId, "Timer", step.decode, Some(step.value.toString)))
+      Future(ReadableStep(step.id, step.deviceId, "Timer", step.decode, Some(formatTimer(step.value))))
     }
     else {
       for {device <- K8055.getDevice(step.deviceId)}
-        yield {
-          ReadableStep(step.id, step.deviceId, device.description, step.decode,
-            step.value.map(v => v.toString + device.units.getOrElse("")))
-        }
+      yield {
+        ReadableStep(step.id, step.deviceId, device.description, step.decode,
+          formatValue(device, step))
+      }
     }
+  }
+
+  private def formatValue(device: Device, step: Step):Option[String] = {
+    step.value.map { value =>
+      val unRounded: Double = device.conversionFactor.getOrElse(1.0) * value +
+        device.conversionOffset.getOrElse(0.0)
+
+      val roundFactor: Double = math.pow(10.0, device.decimalPlaces.getOrElse(0).toDouble)
+      val roundedValue: Double = math.round(unRounded * roundFactor) / roundFactor
+      roundedValue.toString + device.units.fold("")(u=>u)
+    }
+  }
+
+  def formatTimer(totalSeconds:Option[Int]):String = {
+    val hours:Int = math.floor(totalSeconds.getOrElse(0) / 3600).toInt
+    val ts:Int = totalSeconds.getOrElse(0) % 3600
+    val mins:Int = Math.floor(ts / 60).toInt
+    val secs:Int = totalSeconds.getOrElse(0) % 60
+    padZero(hours)+":"+padZero(mins)+":"+padZero(secs)
+  }
+
+  def padZero(num:Int):String = {
+    if(num<10) "0"+num
+    else num.toString
   }
 
   //TODO: This is generic, could go in utils package?...

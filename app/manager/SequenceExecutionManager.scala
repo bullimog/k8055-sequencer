@@ -32,7 +32,7 @@ trait SequenceExecutionManager {
   def performStep(step: Step): Unit = {
     step.eventType match {
       case (EventType.ON) => K8055.patchDeviceState(DeviceState(step.deviceId, Some(true), None)); incStep() //Digital Out
-      case (EventType.OFF) => K8055.patchDeviceState(DeviceState(step.deviceId, Some(true), None)); incStep() //Digital/Analogue Out/Monitor
+      case (EventType.OFF) => K8055.patchDeviceState(DeviceState(step.deviceId, Some(false), None)); incStep() //Digital/Analogue Out/Monitor
       case (EventType.SET_VALUE) => K8055.patchDeviceState(DeviceState(step.deviceId, None, step.value)); incStep()
       case (EventType.WAIT_RISING) => runWaitRising(step)
       case (EventType.WAIT_FALLING) => runWaitFalling(step)
