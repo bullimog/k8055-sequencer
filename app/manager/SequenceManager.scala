@@ -4,6 +4,7 @@ import akka.actor.FSM.Failure
 import connectors.{Configuration, SequenceConfigIO, K8055}
 import model.Step._
 import model._
+import utils.ListUtils
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -108,22 +109,12 @@ trait SequenceManager{
     else num.toString
   }
 
-  //TODO: This is generic, could go in utils package?...
-  private def listFuture2FutureList[T](lf: List[Future[T]]): Future[List[T]] =
-    lf.foldRight(Future(Nil:List[T]))((list, listItem) =>
-    for{
-      _list <- list
-      _listItem <- listItem
-    } yield _list::_listItem)
-
-
-
   def sequenceToReadableSequence(sequence: Sequence):Future[ReadableSequence] = {
     val futureSteps:List[Future[ReadableStep]] =
       for (step <- sequence.steps)
       yield stepToReadableStep(step)
 
-    listFuture2FutureList(futureSteps).map(steps=> ReadableSequence(sequence.description, steps))
+    ListUtils.listOfFutures2FutureList(futureSteps).map(steps=> ReadableSequence(sequence.description, steps))
   }
 
 }
