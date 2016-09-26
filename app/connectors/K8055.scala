@@ -54,7 +54,7 @@ trait K8055{
     }
   }
 
-  //TODO: Need to tidy this up - default devices are not ideal
+
   def getDevice(deviceId: String):Future[Device]  = {
      doGet(k8055Host + k8055Device + deviceId).fold(Future(Device("0", "No response from server",0, 0))) {
       theFuture => theFuture.map { wsresponse =>           // get the WSResponse out of the Future using map

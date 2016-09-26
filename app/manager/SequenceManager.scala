@@ -1,14 +1,11 @@
 package manager
 
-import akka.actor.FSM.Failure
 import connectors.{Configuration, SequenceConfigIO, K8055}
-import model.Step._
 import model._
 import utils.ListUtils
 
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.Success
 
 object SequenceManager extends SequenceManager{
   override val sequenceConfigIO = SequenceConfigIO
@@ -78,9 +75,7 @@ trait SequenceManager{
     }
     else {
       for {device <- K8055.getDevice(step.deviceId)}
-      yield {
-        ReadableStep(step.id, step.deviceId, device.description, step.decode,
-          formatValue(device, step))
+        yield {ReadableStep(step.id, step.deviceId, device.description, step.decode, formatValue(device, step))
       }
     }
   }
