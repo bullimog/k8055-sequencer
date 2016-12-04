@@ -40,6 +40,8 @@ trait SequenceExecutionManager {
       case (EventType.WAIT_ON) => runWaitOn(step)
       case (EventType.WAIT_OFF) => runWaitOff(step)
       case (EventType.WAIT_COUNT) => incStep()
+      case (EventType.STROBE_ON_TIME) => K8055.patchDeviceState(DeviceState(step.deviceId, None, None, step.value)); incStep()
+      case (EventType.STROBE_OFF_TIME) => K8055.patchDeviceState(DeviceState(step.deviceId, None, None, None, step.value)); incStep()
       case _ => Logger.warn("Bad Step Type: " + step)
     }
   }
