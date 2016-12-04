@@ -19,6 +19,9 @@ case class Step(id: Int, deviceId: String, eventType:EventType, value: Option[In
       case EventType.WAIT_ON => "Wait for on"
       case EventType.WAIT_OFF => "Wait for off"
       case EventType.WAIT_COUNT => "Wait for count"
+      case EventType.STROBE_ON_TIME => "Set on time"
+      case EventType.STROBE_OFF_TIME => "Set off time"
+      case _ => "Unknown Step Type"
     }
   }
 }

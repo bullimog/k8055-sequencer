@@ -1,45 +1,78 @@
 {
   "name" : "First",
   "description" : "My First Sequence",
-  "steps" : [ {
+  "steps" : [{
     "id" : 1,
-    "device" : "AX-1",
+    "device" : "TI-1",
+    "eventType" : "WAIT_TIME",
+    "value" : 5
+  }, {
+    "id" : 2,
+    "device" : "AO-1",
     "eventType" : "SET_VALUE",
     "value" : 41
   }, {
-    "id" : 2,
+    "id" : 3,
     "device" : "DO-1",
     "eventType" : "ON"
   }, {
-    "id" : 3,
+    "id" : 4,
     "device" : "AO-1",
     "eventType" : "SET_VALUE",
     "value" : 104
+  },{
+    "id" : 5,
+    "device" : "ST-1",
+    "eventType" : "ON"
+  },{
+    "id" : 6,
+    "device" : "ST-1",
+    "eventType" : "STROBE_ON_TIME",
+    "value": 3
   }, {
-    "id" : 4,
+    "id" : 7,
     "device" : "TI-1",
     "eventType" : "WAIT_TIME",
-    "value" : 10
+    "value" : 5
   }, {
-    "id" : 5,
+    "id" : 8,
+    "device" : "ST-1",
+    "eventType" : "STROBE_OFF_TIME",
+    "value" : 2
+  }, {
+    "id" : 9,
     "device" : "MO-1",
     "eventType" : "SET_VALUE",
     "value" : 173
+  },{
+    "id" : 10,
+    "device" : "MO-1",
+    "eventType" : "ON"
   }, {
-    "id" : 6,
+    "id" : 11,
     "device" : "AI-1",
     "eventType" : "WAIT_RISING",
-    "value" : 173
+    "value" : 0
   }, {
-    "id" : 7,
+    "id" : 12,
+    "device" : "MO-1",
+    "eventType" : "SET_VALUE",
+    "value" : 55
+  },{
+    "id" : 13,
+    "device" : "TI-1",
+    "eventType" : "WAIT_TIME",
+    "value" : 5
+  }, {
+    "id" : 14,
     "device" : "MO-1",
     "eventType" : "OFF"
   }, {
-    "id" : 8,
+    "id" : 15,
     "device" : "DO-1",
     "eventType" : "OFF"
   }, {
-    "id" : 9,
+    "id" : 16,
     "device" : "AO-1",
     "eventType" : "SET_VALUE",
     "value" : 0
