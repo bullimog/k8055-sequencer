@@ -3,78 +3,314 @@
   "description" : "My First Sequence",
   "steps" : [{
     "id" : 1,
+    "device" : "ST-1",
+    "eventType" : "OFF"
+  }, {
+      "id" : 2,
+      "device" : "MO-1",
+      "eventType" : "OFF"
+  }, {
+    "id" : 3,
+    "device" : "MO-2",
+    "eventType" : "OFF"
+  }, {
+    "id" : 4,
+    "device" : "MO-3",
+    "eventType" : "OFF"
+  }, {
+    "id" : 5,
+    "device" : "AO-1",
+    "eventType" : "SET_VALUE",
+    "value" : 0
+  }, {
+    "id" : 6,
+    "device" : "DO-1",
+    "eventType" : "OFF"
+  }, {
+    "id" : 7,
+    "device" : "DO-2",
+    "eventType" : "OFF"
+  }, {
+    "id" : 8,
+    "device" : "DO-3",
+    "eventType" : "OFF"
+  }, {
+    "id" : 9,
+    "device" : "DO-4",
+    "eventType" : "OFF"
+  }, {
+    "id" : 10,
+    "device" : "DO-5",
+    "eventType" : "OFF"
+  }, {
+    "id" : 11,
+    "device" : "DO-6",
+    "eventType" : "OFF"
+  }, {
+    "id" : 12,
+    "device" : "DO-7",
+    "eventType" : "OFF"
+  }, {
+    "id" : 13,
+    "device" : "DO-8",
+    "eventType" : "OFF"
+  }, {
+    "id" : 14,
+    "_comment": "Wait for 5 seconds, just in case",
+    "device" : "TI-1",
+    "eventType" : "WAIT_TIME",
+    "value" : 5
+  },{
+    "id" : 15,
+    "_comment": "Switch power to the boiler",
+    "device" : "DO-3",
+    "eventType" : "ON"
+  },{
+    "id" : 16,
+    "_comment": "Switch the triac to 100%",
+    "device" : "AO-1",
+    "eventType" : "SET_VALUE",
+    "value" : 255
+  }, {
+    "id" : 17,
+    "_comment": "Wait for boiler to reach temperature",
+    "device" : "AI-2",
+    "eventType" : "WAIT_RISING",
+    "value" : 50
+  },{
+    "id" : 18,
+    "_comment": "Switch off the triac",
+    "device" : "AO-1",
+    "eventType" : "SET_VALUE",
+    "value" : 0
+  }, {
+    "id" : 19,
+    "_comment": "Switch power to the masher",
+    "device" : "DO-3",
+    "eventType" : "OFF"
+  }, {
+    "id" : 20,
+    "device" : "MO-1",
+    "_comment": "Set mash thermostat to strike temperature",
+    "eventType" : "SET_VALUE",
+    "value" : 50
+  }, {
+    "id" : 21,
+    "device" : "MO-1",
+    "_comment": "Enable mash thermostat",
+    "eventType" : "ON"
+  }, {
+    "id" : 22,
+    "_comment": "Wait for mash in",
+    "device" : "TI-1",
+    "eventType" : "WAIT_TIME",
+    "value" : 3600
+  }, {
+    "id" : 23,
+    "_comment": "Set mash thermostat to mash temperature",
+    "device" : "MO-1",
+    "eventType" : "SET_VALUE",
+    "value" : 60
+  }, {
+    "id" : 24,
+    "_comment": "Close wort valve",
+    "device" : "DO-4",
+    "eventType" : "OFF"
+  }, {
+    "id" : 25,
+    "_comment": "Wait for valve to close",
     "device" : "TI-1",
     "eventType" : "WAIT_TIME",
     "value" : 5
   }, {
-    "id" : 2,
-    "device" : "AO-1",
-    "eventType" : "SET_VALUE",
-    "value" : 41
-  }, {
-    "id" : 3,
-    "device" : "DO-1",
+    "id" : 26,
+    "_comment": "Enable mash overflow/pump",
+    "device" : "MO-2",
     "eventType" : "ON"
   }, {
-    "id" : 4,
+    "id" : 27,
+    "_comment": "Wait for mash to complete",
+    "device" : "TI-1",
+    "eventType" : "WAIT_TIME",
+    "value" : 120
+  }, {
+    "id" : 28,
+    "device" : "MO-1",
+    "_comment": "Disable mash thermostat",
+    "eventType" : "OFF"
+  }, {
+    "id" : 29,
     "device" : "AO-1",
+    "_comment": "Switch off Triac",
     "eventType" : "SET_VALUE",
-    "value" : 104
-  },{
-    "id" : 5,
+    "value": 0
+  }, {
+    "id" : 30,
+    "_comment": "Disable mash recirculate overflow monitor",
+    "device" : "MO-2",
+    "eventType" : "OFF"
+  }, {
+    "id" : 31,
+    "_comment": "Stop mash pump",
+    "device" : "DO-7",
+    "eventType" : "OFF"
+  }, {
+    "id" : 32,
+    "_comment": "Open wort valve",
+    "device" : "DO-4",
+    "eventType" : "ON"
+  }, {
+    "id" : 33,
+    "_comment": "Wait for valve to open",
+    "device" : "TI-1",
+    "eventType" : "WAIT_TIME",
+    "value" : 5
+  }, {
+    "id" : 34,
+    "_comment": "Set sparge pump on time",
     "device" : "ST-1",
-    "eventType" : "ON"
-  },{
-    "id" : 6,
+    "eventType" : "STROBE_ON_TIME",
+    "value": 7
+  }, {
+    "id" : 35,
+    "_comment": "Set sparge pump off",
     "device" : "ST-1",
     "eventType" : "STROBE_ON_TIME",
     "value": 3
   }, {
-    "id" : 7,
-    "device" : "TI-1",
-    "eventType" : "WAIT_TIME",
-    "value" : 5
-  }, {
-    "id" : 8,
+    "id" : 36,
+    "_comment": "Enable sparge pump pulse",
     "device" : "ST-1",
-    "eventType" : "STROBE_OFF_TIME",
-    "value" : 2
-  }, {
-    "id" : 9,
-    "device" : "MO-1",
-    "eventType" : "SET_VALUE",
-    "value" : 173
-  },{
-    "id" : 10,
-    "device" : "MO-1",
     "eventType" : "ON"
   }, {
-    "id" : 11,
-    "device" : "AI-1",
-    "eventType" : "WAIT_RISING",
-    "value" : 0
+    "id" : 37,
+    "_comment": "Open boiler valve",
+    "device" : "DO-5",
+    "eventType" : "ON"
   }, {
-    "id" : 12,
-    "device" : "MO-1",
-    "eventType" : "SET_VALUE",
-    "value" : 55
-  },{
-    "id" : 13,
+    "id" : 38,
+    "_comment": "Wait for valve to open",
     "device" : "TI-1",
     "eventType" : "WAIT_TIME",
     "value" : 5
   }, {
-    "id" : 14,
+    "id" : 39,
+    "_comment": "Enable sparge overflow/pump",
+    "device" : "MO-3",
+    "eventType" : "ON"
+  }, {
+    "id" : 40,
+    "_comment": "Wait for wort bucket to fill",
+    "device" : "DI-3",
+    "eventType" : "WAIT_ON"
+  },{
+    "id" : 41,
+    "_comment": "Disable sparge pump pulse",
+    "device" : "ST-1",
+    "eventType" : "OFF"
+  },{
+    "id" : 42,
+    "_comment": "Disable sparge overflow/pump",
+    "device" : "MO-3",
+    "eventType" : "OFF"
+  }, {
+    "id" : 43,
+    "_comment": "Switch off mash thermostat",
     "device" : "MO-1",
     "eventType" : "OFF"
-  }, {
-    "id" : 15,
-    "device" : "DO-1",
-    "eventType" : "OFF"
-  }, {
-    "id" : 16,
+  },{
+    "id" : 44,
+    "_comment": "Switch the triac to 0%",
     "device" : "AO-1",
     "eventType" : "SET_VALUE",
     "value" : 0
+  }, {
+    "id" : 45,
+    "_comment": "Switch on boiler pump, to empty boiler",
+    "device" : "DO-8",
+    "eventType" : "ON"
+  }, {
+    "id" : 46,
+    "_comment": "Wait for boiler to empty",
+    "device" : "TI-1",
+    "eventType" : "WAIT_TIME",
+    "value" : 30
+  }, {
+    "id" : 47,
+    "_comment": "Switch off boiler",
+    "device" : "DO-8",
+    "eventType" : "OFF"
+  }, {
+    "id" : 48,
+    "_comment": "Switch on wort pump, to fill boiler",
+    "device" : "DO-6",
+    "eventType" : "ON"
+  },{
+    "id" : 49,
+    "_comment": "Wait for wort bucket to empty",
+    "device" : "DI-4",
+    "eventType" : "WAIT_OFF"
+  }, {
+    "id" : 50,
+    "_comment": "Switch off wort pump",
+    "device" : "DO-6",
+    "eventType" : "OFF"
+  },
+
+
+  {
+    "id" : 51,
+    "device" : "ST-1",
+    "eventType" : "OFF"
+  },
+  {
+    "id" : 52,
+    "device" : "MO-1",
+    "eventType" : "OFF"
+  },{
+    "id" : 53,
+    "device" : "MO-2",
+    "eventType" : "OFF"
+  }, {
+    "id" : 54,
+    "device" : "MO-3",
+    "eventType" : "OFF"
+  }, {
+    "id" : 55,
+    "device" : "AO-1",
+    "eventType" : "SET_VALUE",
+    "value" : 0
+  }, {
+    "id" : 56,
+    "device" : "DO-1",
+    "eventType" : "OFF"
+  }, {
+    "id" : 57,
+    "device" : "DO-2",
+    "eventType" : "OFF"
+  }, {
+    "id" : 58,
+    "device" : "DO-3",
+    "eventType" : "OFF"
+  }, {
+    "id" : 59,
+    "device" : "DO-4",
+    "eventType" : "OFF"
+  }, {
+    "id" : 60,
+    "device" : "DO-5",
+    "eventType" : "OFF"
+  }, {
+    "id" : 61,
+    "device" : "DO-6",
+    "eventType" : "OFF"
+    }, {
+    "id" : 62,
+    "device" : "DO-7",
+    "eventType" : "OFF"
+  }, {
+    "id" : 63,
+    "device" : "DO-8",
+    "eventType" : "OFF"
   } ]
 }
