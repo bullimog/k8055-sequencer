@@ -25,7 +25,7 @@ trait SequenceManager{
 
 
   def getSequence:Sequence = {
-    val oSequence: Option[Sequence] = sequenceConfigIO.readSequenceFromFile(configuration.filename)
+    val oSequence: Option[Sequence] = sequenceConfigIO.readProgramFromFile(configuration.filename)
     oSequence.fold(Sequence("No Sequence", "Error", List()))({
       sequence => sequence
     })

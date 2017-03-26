@@ -2,59 +2,6 @@
   "name" : "First",
   "description" : "My First Sequence",
   "steps" : [{
-    "id" : 1,
-    "device" : "ST-1",
-    "eventType" : "OFF"
-  }, {
-      "id" : 2,
-      "device" : "MO-1",
-      "eventType" : "OFF"
-  }, {
-    "id" : 3,
-    "device" : "MO-2",
-    "eventType" : "OFF"
-  }, {
-    "id" : 4,
-    "device" : "MO-3",
-    "eventType" : "OFF"
-  }, {
-    "id" : 5,
-    "device" : "AO-1",
-    "eventType" : "SET_VALUE",
-    "value" : 0
-  }, {
-    "id" : 6,
-    "device" : "DO-1",
-    "eventType" : "OFF"
-  }, {
-    "id" : 7,
-    "device" : "DO-2",
-    "eventType" : "OFF"
-  }, {
-    "id" : 8,
-    "device" : "DO-3",
-    "eventType" : "OFF"
-  }, {
-    "id" : 9,
-    "device" : "DO-4",
-    "eventType" : "OFF"
-  }, {
-    "id" : 10,
-    "device" : "DO-5",
-    "eventType" : "OFF"
-  }, {
-    "id" : 11,
-    "device" : "DO-6",
-    "eventType" : "OFF"
-  }, {
-    "id" : 12,
-    "device" : "DO-7",
-    "eventType" : "OFF"
-  }, {
-    "id" : 13,
-    "device" : "DO-8",
-    "eventType" : "OFF"
-  }, {
     "id" : 14,
     "_comment": "Wait for 5 seconds, just in case",
     "device" : "TI-1",
@@ -255,62 +202,5 @@
     "_comment": "Switch off wort pump",
     "device" : "DO-6",
     "eventType" : "OFF"
-  },
-
-
-  {
-    "id" : 51,
-    "device" : "ST-1",
-    "eventType" : "OFF"
-  },
-  {
-    "id" : 52,
-    "device" : "MO-1",
-    "eventType" : "OFF"
-  },{
-    "id" : 53,
-    "device" : "MO-2",
-    "eventType" : "OFF"
-  }, {
-    "id" : 54,
-    "device" : "MO-3",
-    "eventType" : "OFF"
-  }, {
-    "id" : 55,
-    "device" : "AO-1",
-    "eventType" : "SET_VALUE",
-    "value" : 0
-  }, {
-    "id" : 56,
-    "device" : "DO-1",
-    "eventType" : "OFF"
-  }, {
-    "id" : 57,
-    "device" : "DO-2",
-    "eventType" : "OFF"
-  }, {
-    "id" : 58,
-    "device" : "DO-3",
-    "eventType" : "OFF"
-  }, {
-    "id" : 59,
-    "device" : "DO-4",
-    "eventType" : "OFF"
-  }, {
-    "id" : 60,
-    "device" : "DO-5",
-    "eventType" : "OFF"
-  }, {
-    "id" : 61,
-    "device" : "DO-6",
-    "eventType" : "OFF"
-    }, {
-    "id" : 62,
-    "device" : "DO-7",
-    "eventType" : "OFF"
-  }, {
-    "id" : 63,
-    "device" : "DO-8",
-    "eventType" : "OFF"
-  } ]
+  }]
 }

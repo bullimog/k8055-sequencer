@@ -1,0 +1,32 @@
+{
+  "name": "Prepare sparge",
+  "description": "Get mash tun ready to sparge and Lauter grains",
+  "steps": [
+    {
+      "id": 1,
+      "_comment": "Open boiler valve",
+      "device": "DO-5",
+      "eventType": "ON"
+    },
+    {
+      "id": 2,
+      "_comment": "Wait for valve to open",
+      "device": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 5
+    },
+    {
+      "id": 3,
+      "_comment": "Enable sparge overflow/pump",
+      "device": "MO-3",
+      "eventType": "ON"
+    },
+    {
+      "id": 4,
+      "_comment": "Wait for sparge water to sit on top of grain",
+      "device": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 15
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name" : "A mash sequence",
+  "description" : "Perform a basic mash programme",
+  "sequenceFiles" : [
+    "reset.json",
+    "brief-pause.json",
+    "preheat-boiler.json",
+    "brief-pause.json",
+    "masher-strike-temp.json",
+    "brief-pause.json",
+    "mash.json",
+    "brief-pause.json",
+    "prepare-sparge.json",
+    "brief-pause.json",
+    "sparge.json",
+    "brief-pause.json",
+    "finish-sparge.json",
+    "brief-pause.json",
+    "empty-boiler.json",
+    "brief-pause.json",
+    "prime-boiler-pump.json",
+    "brief-pause.json",
+    "wort-to-boiler.json",
+    "brief-pause.json",
+    "boil.json",
+    "brief-pause.json",
+    "cool.json",
+    "brief-pause.json",
+    "reset.json"
+  ]
+}

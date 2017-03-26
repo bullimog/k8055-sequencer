@@ -1,0 +1,35 @@
+{
+  "name": "Preheat Boiler",
+  "description": "Get the liquor tank up to temperature",
+  "steps": [
+    {
+      "id" : 1,
+      "_comment": "Switch power to the boiler",
+      "device" : "DO-3",
+      "eventType" : "ON"
+    },{
+      "id" : 2,
+      "_comment": "Switch the triac to 100%",
+      "device" : "AO-1",
+      "eventType" : "SET_VALUE",
+      "value" : 255
+    }, {
+      "id" : 3,
+      "_comment": "Wait for boiler to reach temperature",
+      "device" : "AI-2",
+      "eventType" : "WAIT_RISING",
+      "value" : 50
+    },{
+      "id" : 4,
+      "_comment": "Switch off the triac",
+      "device" : "AO-1",
+      "eventType" : "SET_VALUE",
+      "value" : 0
+    }, {
+      "id" : 5,
+      "_comment": "Switch power away from the masher",
+      "device" : "DO-3",
+      "eventType" : "OFF"
+    }
+  ]
+}

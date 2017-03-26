@@ -1,0 +1,24 @@
+{
+  "name": "Move wort to boiler",
+  "description": "Transfer all the wort into the boiler",
+  "steps": [
+    {
+      "id": 1,
+      "_comment": "Switch on wort pump",
+      "device": "DO-6",
+      "eventType": "ON"
+    },
+    {
+      "id": 2,
+      "_comment": "Wait for wort bucket to empty",
+      "device": "DI-3",
+      "eventType": "WAIT_OFF"
+    },
+    {
+      "id": 3,
+      "_comment": "Switch off wort pump",
+      "device": "DO-6",
+      "eventType": "OFF"
+    }
+  ]
+}

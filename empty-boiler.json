@@ -1,0 +1,37 @@
+{
+  "name": "Empty Boiler",
+  "description": "Dump the remaining liquor in the mash tun",
+  "steps": [
+    {
+      "id": 1,
+      "_comment": "open boiler valve",
+      "device": "DO-5",
+      "eventType": "ON"
+    },
+    {
+      "id": 2,
+      "_comment": "Switch on boiler pump",
+      "device": "DO-8",
+      "eventType": "ON"
+    },
+    {
+      "id": 3,
+      "_comment": "Wait for boiler to empty (don't worry about mash tun overflow)",
+      "device": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 120
+    },
+    {
+      "id": 4,
+      "_comment": "Switch off boiler pump",
+      "device": "DO-8",
+      "eventType": "OFF"
+    },
+    {
+      "id": 5,
+      "_comment": "close boiler valve",
+      "device": "DO-5",
+      "eventType": "OFF"
+    }
+  ]
+}

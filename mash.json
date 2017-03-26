@@ -1,0 +1,57 @@
+{
+  "name": "Perform mash",
+  "description": "Mash grain for the correct duration",
+  "steps": [
+    {
+      "id": 1,
+      "device": "MO-1",
+      "_comment": "Set mash thermostat temp",
+      "eventType": "SET_VALUE",
+      "value": 172
+    },
+    {
+      "id": 2,
+      "device": "MO-1",
+      "_comment": "Enable mash thermostat",
+      "eventType": "ON"
+    },
+    {
+      "id": 3,
+      "_comment": "Enable mash overflow/pump",
+      "device": "MO-2",
+      "eventType": "ON"
+    },
+    {
+      "id": 4,
+      "_comment": "Wait for mash to complete",
+      "device": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 120
+    },
+    {
+      "id": 5,
+      "device": "MO-1",
+      "_comment": "Disable mash thermostat",
+      "eventType": "OFF"
+    },
+    {
+      "id": 6,
+      "device": "AO-1",
+      "_comment": "Switch off Triac",
+      "eventType": "SET_VALUE",
+      "value": 0
+    },
+    {
+      "id": 7,
+      "_comment": "Disable mash recirculate overflow monitor",
+      "device": "MO-2",
+      "eventType": "OFF"
+    },
+    {
+      "id": 8,
+      "_comment": "Stop mash pump",
+      "device": "DO-7",
+      "eventType": "OFF"
+    }
+  ]
+}

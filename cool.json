@@ -1,0 +1,50 @@
+{
+  "name": "Cool the wort",
+  "description": "Get the boiler down to pitch temperature",
+  "steps": [
+    {
+      "id": 1,
+      "_comment": "close boiler valve",
+      "device": "DO-5",
+      "eventType": "OFF"
+    },
+    {
+      "id": 2,
+      "_comment": "circulate hot wort, to sterilise cooler",
+      "device": "DO-8",
+      "eventType": "ON"
+    },
+    {
+      "id": 3,
+      "_comment": "Wait for cooler to heat and sterilise",
+      "device": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 120
+    },
+    {
+      "id": 4,
+      "_comment": "turn on cold water counter-flow",
+      "device": "DO-2",
+      "eventType": "ON"
+    },
+    {
+      "id": 5,
+      "_comment": "Wait for boiler temperature to fall",
+      "device": "AI-2",
+      "eventType": "WAIT_FALLING",
+      "value": 48
+    },
+    {
+      "id": 6,
+      "_comment": "stop wort circulate",
+      "device": "DO-8",
+      "eventType": "OFF"
+    },
+    {
+      "id": 7,
+      "_comment": "turn off cold water counter-flow",
+      "device": "DO-2",
+      "eventType": "OFF"
+    }
+  ]
+}

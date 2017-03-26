@@ -1,0 +1,42 @@
+{
+  "name": "Finish Sparge",
+  "description": "Tidy up settings, after Sparge and Lauter",
+  "steps": [
+    {
+      "id": 12,
+      "_comment": "Disable sparge overflow/pump",
+      "device": "MO-3",
+      "eventType": "OFF"
+    },
+    {
+      "id": 13,
+      "_comment": "Switch off boiler pump",
+      "device": "DO-8",
+      "eventType": "OFF"
+    },
+    {
+      "id": 11,
+      "_comment": "close boiler valve",
+      "device": "DO-5",
+      "eventType": "OFF"
+    },
+    {
+      "id": 14,
+      "_comment": "Disable mash pump pulse",
+      "device": "ST-1",
+      "eventType": "OFF"
+    },
+    {
+      "id": 15,
+      "_comment": "Switch off mash pump",
+      "device": "DO-8",
+      "eventType": "OFF"
+    },
+    {
+      "id": 16,
+      "_comment": "Close wort valve",
+      "device": "DO-4",
+      "eventType": "OFF"
+    }
+  ]
+}
