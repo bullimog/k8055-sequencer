@@ -5,26 +5,26 @@
     {
       "id": 1,
       "_comment": "Open boiler valve",
-      "device": "DO-5",
+      "deviceId": "DO-5",
       "eventType": "ON"
     },
     {
       "id": 2,
       "_comment": "Wait for valve to open",
-      "device": "TI-1",
+      "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 5
     },
     {
       "id": 3,
       "_comment": "Enable sparge overflow/pump",
-      "device": "MO-3",
+      "deviceId": "MO-3",
       "eventType": "ON"
     },
     {
       "id": 4,
       "_comment": "Wait for sparge water to sit on top of grain",
-      "device": "TI-1",
+      "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 15
     }

@@ -1,10 +1,13 @@
 package model
 
-import play.api.libs.functional.syntax._
 import play.api.libs.json._
 import model.EventType.EventType
 
-case class Step(id: Int, deviceId: String, eventType:EventType, value: Option[Int]) {
+case class Step(id: Int,
+                stepDescription: Option[String],
+                deviceId: String,
+                eventType:EventType,
+                value: Option[Int]) {
   override def toString: String = {
     "##Step device:" + deviceId + ", eventType:" + decode + ", target:" + value
   }
@@ -27,12 +30,6 @@ case class Step(id: Int, deviceId: String, eventType:EventType, value: Option[In
 }
 
 object Step {
-  implicit val stepReads: Reads[Step] = (
-    (JsPath \ "id").read[Int] and
-    (JsPath \ "device").read[String] and
-    (JsPath \ "eventType").read[EventType] and
-    (JsPath \ "value").readNullable[Int]
-   )(Step.apply _)
-
+  implicit val stepReads = Json.reads[Step]
   implicit val stepWrites = Json.writes[Step]
 }

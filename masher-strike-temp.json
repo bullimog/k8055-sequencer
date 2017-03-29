@@ -1,57 +1,57 @@
 {
   "name": "Preheat Boiler",
-  "description": "Get the liquor tank up to temperature",
+  "description": "Get masher up to strike temperature",
   "steps": [
     {
       "id": 1,
       "_comment": "Switch power to the masher",
-      "device": "DO-3",
+      "deviceId": "DO-3",
       "eventType": "OFF"
     },
     {
       "id": 2,
       "_comment": "Switch the triac to 100%",
-      "device": "AO-1",
+      "deviceId": "AO-1",
       "eventType": "SET_VALUE",
       "value": 255
     },
     {
       "id": 3,
-      "device": "AI-1",
+      "deviceId": "AI-1",
       "_comment": "Wait for strike temperature",
       "eventType": "WAIT_RISING",
       "value": 181
     },
     {
       "id": 4,
-      "device": "MO-1",
+      "deviceId": "MO-1",
       "_comment": "Set mash thermostat to strike temperature",
       "eventType": "SET_VALUE",
       "value": 181
     },
     {
       "id": 5,
-      "device": "MO-1",
+      "deviceId": "MO-1",
       "_comment": "Enable mash thermostat",
       "eventType": "ON"
     },
     {
       "id": 6,
       "_comment": "Hold temperature, wait for mash in",
-      "device": "TI-1",
+      "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 3600
     },
     {
       "id": 7,
-      "device": "MO-1",
+      "deviceId": "MO-1",
       "_comment": "Disable thermostat",
       "eventType": "OFF"
     },
     {
       "id": 8,
       "_comment": "Switch the triac to 0%",
-      "device": "AO-1",
+      "deviceId": "AO-1",
       "eventType": "SET_VALUE",
       "value": 0
     }

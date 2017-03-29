@@ -71,11 +71,11 @@ trait SequenceManager{
 
   private def stepToReadableStep(step: Step):Future[ReadableStep] = {
     if(step.eventType == EventType.WAIT_TIME){
-      Future(ReadableStep(step.id, step.deviceId, "Timer", step.decode, Some(formatTimer(step.value))))
+      Future(ReadableStep(step.id, step.stepDescription, step.deviceId, "Timer", step.decode, Some(formatTimer(step.value))))
     }
     else {
       for {device <- K8055.getDevice(step.deviceId)}
-        yield {ReadableStep(step.id, step.deviceId, device.description, step.decode, formatValue(device, step))
+        yield {ReadableStep(step.id, step.stepDescription, step.deviceId, device.description, step.decode, formatValue(device, step))
       }
     }
   }

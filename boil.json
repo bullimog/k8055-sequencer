@@ -5,47 +5,47 @@
     {
       "id": 1,
       "_comment": "Switch power to the boiler",
-      "device": "DO-3",
+      "deviceId": "DO-3",
       "eventType": "ON"
     },
     {
       "id": 2,
       "_comment": "Switch the triac to 100%",
-      "device": "AO-1",
+      "deviceId": "AO-1",
       "eventType": "SET_VALUE",
       "value": 255
     },
     {
       "id": 3,
       "_comment": "Wait for boiler to reach temperature",
-      "device": "AI-2",
+      "deviceId": "AI-2",
       "eventType": "WAIT_RISING",
       "value": 250
     },
     {
       "id": 4,
       "_comment": "Switch the triac power to rolling boil",
-      "device": "AO-1",
+      "deviceId": "AO-1",
       "eventType": "SET_VALUE",
       "value": 230
     },
     {
       "id": 5,
       "_comment": "Wait for boil to complete",
-      "device": "TI-1",
+      "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 120
     },    {
       "id": 6,
       "_comment": "Switch the triac off",
-      "device": "AO-1",
+      "deviceId": "AO-1",
       "eventType": "SET_VALUE",
       "value": 0
     },
     {
       "id": 7,
       "_comment": "Switch power away from the boiler",
-      "device": "DO-3",
+      "deviceId": "DO-3",
       "eventType": "OFF"
     }
   ]

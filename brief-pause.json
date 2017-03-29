@@ -5,7 +5,7 @@
     {
       "id": 4,
       "_comment": "Wait for sparge water to sit on top of grain",
-      "device": "TI-1",
+      "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 5
     }

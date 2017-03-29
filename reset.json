@@ -1,58 +1,72 @@
 {
-  "name" : "Reset",
-  "description" : "Returns all devices back to datum",
-  "steps" : [{
-    "id" : 1,
-    "device" : "ST-1",
-    "eventType" : "OFF"
-  }, {
-    "id" : 2,
-    "device" : "MO-1",
-    "eventType" : "OFF"
-  }, {
-    "id" : 3,
-    "device" : "MO-2",
-    "eventType" : "OFF"
-  }, {
-    "id" : 4,
-    "device" : "MO-3",
-    "eventType" : "OFF"
-  }, {
-    "id" : 5,
-    "device" : "AO-1",
-    "eventType" : "SET_VALUE",
-    "value" : 0
-  }, {
-    "id" : 6,
-    "device" : "DO-1",
-    "eventType" : "OFF"
-  }, {
-    "id" : 7,
-    "device" : "DO-2",
-    "eventType" : "OFF"
-  }, {
-    "id" : 8,
-    "device" : "DO-3",
-    "eventType" : "OFF"
-  }, {
-    "id" : 9,
-    "device" : "DO-4",
-    "eventType" : "OFF"
-  }, {
-    "id" : 10,
-    "device" : "DO-5",
-    "eventType" : "OFF"
-  }, {
-    "id" : 11,
-    "device" : "DO-6",
-    "eventType" : "OFF"
-  }, {
-    "id" : 12,
-    "device" : "DO-7",
-    "eventType" : "OFF"
-  }, {
-    "id" : 13,
-    "device" : "DO-8",
-    "eventType" : "OFF"
-  } ]
+  "name": "Reset",
+  "description": "Returns all devices back to datum",
+  "steps": [
+    {
+      "id": 1,
+      "deviceId": "ST-1",
+      "eventType": "OFF"
+    },
+    {
+      "id": 2,
+      "deviceId": "MO-1",
+      "eventType": "OFF"
+    },
+    {
+      "id": 3,
+      "deviceId": "MO-2",
+      "eventType": "OFF"
+    },
+    {
+      "id": 4,
+      "deviceId": "MO-3",
+      "eventType": "OFF"
+    },
+    {
+      "id": 5,
+      "deviceId": "AO-1",
+      "eventType": "SET_VALUE",
+      "value": 0
+    },
+    {
+      "id": 6,
+      "deviceId": "DO-1",
+      "eventType": "OFF"
+    },
+    {
+      "id": 7,
+      "deviceId": "DO-2",
+      "eventType": "OFF"
+    },
+    {
+      "id": 8,
+      "deviceId": "DO-3",
+      "eventType": "OFF"
+    },
+    {
+      "id": 9,
+      "deviceId": "DO-4",
+      "eventType": "OFF"
+    },
+    {
+      "id": 10,
+      "deviceId": "DO-5",
+      "eventType": "OFF"
+    },
+    {
+      "id": 11,
+      "deviceId": "DO-6",
+      "eventType": "OFF"
+    },
+    {
+      "id": 12,
+      "deviceId": "DO-7",
+      "eventType": "OFF"
+    },
+    {
+      "id": 13,
+      "deviceId": "DO-8",
+      "eventType": "OFF"
+    }
+  ]
 }

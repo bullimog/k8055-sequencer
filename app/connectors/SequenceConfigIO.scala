@@ -5,6 +5,7 @@ import java.io.{File, FileNotFoundException, PrintWriter}
 import model.{Program, Sequence, Step}
 import play.Logger
 import play.api.libs.json.{JsError, JsSuccess, JsValue, Json}
+import model.EventType.DESCRIPTION
 
 import scala.io.Source
 
@@ -27,7 +28,14 @@ trait SequenceConfigIO {
       val json: JsValue = Json.parse(source.mkString)
       parseSequence(json)
     }catch{
-      case e:FileNotFoundException => None
+      case e:FileNotFoundException => {
+        println("Couldn't find sequence file: " + e)
+        None
+      }
+      case e:Exception => {
+        println("Error reading sequence from file: " + e)
+        None
+      }
     }
   }
 
@@ -52,8 +60,11 @@ trait SequenceConfigIO {
 
   def readAllSequencesInProgram(oProgram: Option[Program]):Option[List[Step]] = {
     oProgram.map{ program => program.sequenceFiles.map{
-      seqFileName => readSequenceFromFile(seqFileName).fold(emptySequence)(sequence => sequence)
-    }}.map(sequences => sequences.flatMap(sequence => sequence.steps))
+      seqFileName => readSequenceFromFile(seqFileName).fold({emptySequence})(sequence => sequence)
+    }}.map{
+      sequences => sequences.flatMap(sequence =>
+      List(Step(0, Some(sequence.description),"", DESCRIPTION, None)) ++ sequence.steps)
+    }
   }
 
   def reindexSteps(unindexedSteps: Option[List[Step]]):Option[List[Step]] = {
@@ -76,10 +87,9 @@ trait SequenceConfigIO {
         }
       }
     }catch{
-      case e:FileNotFoundException => {
-        println("File Not found: " + e)
-        None
-      }
+      case e:FileNotFoundException =>
+      println("File Not found: " + e)
+      None
     }
   }
 

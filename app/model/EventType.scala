@@ -14,6 +14,8 @@ object EventType extends Enumeration {
       WAIT_OFF,               // Wait until device is off
       WAIT_COUNT,             // Wait until a counter has reached n (META-DATA = target[Int])
       STROBE_ON_TIME,         // Set duration strobe will be on for
-      STROBE_OFF_TIME = Value // Set duration strobe will be off for
+      STROBE_OFF_TIME,        // Set duration strobe will be off for
+      DESCRIPTION = Value     // Provide a dummy description event
+
   implicit val eventTypeFormat = EnumUtils.enumFormat(EventType)
 }

@@ -5,40 +5,40 @@
     {
       "id": 5,
       "_comment": "Open wort valve",
-      "device": "DO-4",
+      "deviceId": "DO-4",
       "eventType": "ON"
     },
     {
       "id": 6,
       "_comment": "Wait for valve to open",
-      "device": "TI-1",
+      "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 3
     },
     {
       "id": 7,
       "_comment": "Set sparge pump on time",
-      "device": "ST-1",
+      "deviceId": "ST-1",
       "eventType": "STROBE_ON_TIME",
       "value": 7
     },
     {
       "id": 8,
       "_comment": "Set sparge pump off time",
-      "device": "ST-1",
+      "deviceId": "ST-1",
       "eventType": "STROBE_OFF_TIME",
       "value": 3
     },
     {
       "id": 9,
       "_comment": "Enable mash pump pulse",
-      "device": "ST-1",
+      "deviceId": "ST-1",
       "eventType": "ON"
     },
     {
       "id": 10,
       "_comment": "Wait for wort bucket to fill",
-      "device": "DI-3",
+      "deviceId": "DI-3",
       "eventType": "WAIT_ON"
     }
   ]
