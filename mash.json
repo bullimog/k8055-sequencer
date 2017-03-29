@@ -1,6 +1,6 @@
 {
   "name": "Perform mash",
-  "description": "Mash grain for the correct duration",
+  "description": "Mash grain for the correct duration, leaving circulation on at end",
   "steps": [
     {
       "id": 1,
@@ -40,18 +40,6 @@
       "_comment": "Switch off Triac",
       "eventType": "SET_VALUE",
       "value": 0
-    },
-    {
-      "id": 7,
-      "_comment": "Disable mash recirculate overflow monitor",
-      "deviceId": "MO-2",
-      "eventType": "OFF"
-    },
-    {
-      "id": 8,
-      "_comment": "Stop mash pump",
-      "deviceId": "DO-7",
-      "eventType": "OFF"
     }
   ]
 }

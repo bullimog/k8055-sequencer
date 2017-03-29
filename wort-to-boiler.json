@@ -11,7 +11,7 @@
     {
       "id": 2,
       "_comment": "Wait for wort bucket to empty",
-      "deviceId": "DI-3",
+      "deviceId": "DI-4",
       "eventType": "WAIT_OFF"
     },
     {

@@ -4,37 +4,44 @@
   "steps": [
     {
       "id": 1,
-      "_comment": "open boiler valve",
-      "deviceId": "DO-5",
-      "eventType": "ON"
-    },
-    {
-      "id": 2,
       "_comment": "Close wort valve",
       "deviceId": "DO-4",
       "eventType": "OFF"
     },
     {
+      "id": 2,
+      "_comment": "open boiler valve",
+      "deviceId": "DO-5",
+      "eventType": "ON"
+    },
+    {
       "id": 3,
+      "_comment": "Wait for boiler valve to open",
+      "deviceId": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 3
+    },
+    {
+      "id": 4,
       "_comment": "Switch on mash pump",
       "deviceId": "DO-7",
       "eventType": "ON"
     },
     {
-      "id": 4,
+      "id": 5,
       "_comment": "Wait for boiler pump to prime",
       "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 5
     },
     {
-      "id": 5,
+      "id": 6,
       "_comment": "Switch off mash pump",
       "deviceId": "DO-7",
       "eventType": "OFF"
     },
     {
-      "id": 6,
+      "id": 7,
       "_comment": "close boiler valve",
       "deviceId": "DO-5",
       "eventType": "OFF"
