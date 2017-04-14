@@ -1,0 +1,13 @@
+{
+  "name": "Wait for Next to be pressed",
+  "description": "pause",
+  "steps": [
+    {
+      "id": 1,
+      "_comment": "Wait for ages, until Next is pressed",
+      "deviceId": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 18000
+    }
+  ]
+}

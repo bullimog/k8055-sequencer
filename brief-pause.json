@@ -3,8 +3,8 @@
   "description": "Wait for a brief pause",
   "steps": [
     {
-      "id": 4,
-      "_comment": "Wait for sparge water to sit on top of grain",
+      "id": 1,
+      "_comment": "Wait for five seconds",
       "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 5
