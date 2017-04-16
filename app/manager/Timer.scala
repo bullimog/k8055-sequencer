@@ -31,8 +31,7 @@ trait Timer {
   }
 
   def reset():Unit = {
-    finishTime = DateTime.now
-    step = -1
+    this.finishTime = DateTime.now
   }
 
 }

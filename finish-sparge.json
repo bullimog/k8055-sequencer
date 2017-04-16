@@ -15,6 +15,12 @@
       "eventType": "OFF"
     },
     {
+      "id": 13,
+      "_comment": "Switch off mash pump",
+      "deviceId": "DO-7",
+      "eventType": "OFF"
+    },
+    {
       "id": 11,
       "_comment": "close boiler valve",
       "deviceId": "DO-5",

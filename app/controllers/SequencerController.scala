@@ -40,6 +40,7 @@ class SequencerController extends Controller {
     implicit request => {
       SequenceExecutionManager.currentStep = 0
       SequenceExecutionManager.running = false
+      SequenceExecutionManager.timer.reset()
       Future.successful(Ok("Ok"))
     }
   }
@@ -47,6 +48,7 @@ class SequencerController extends Controller {
   def next() = Action.async {
     implicit request => {
       SequenceExecutionManager.incStep()
+      SequenceExecutionManager.timer.reset()
       Future.successful(Ok("Ok"))
     }
   }

@@ -26,6 +26,7 @@ trait SequenceConfigIO {
     try{
       val source = Source.fromFile(fileName, "UTF-8")
       val json: JsValue = Json.parse(source.mkString)
+      source.close()
       parseSequence(json)
     }catch{
       case e:FileNotFoundException => {
@@ -76,6 +77,7 @@ trait SequenceConfigIO {
     try{
       val source = Source.fromFile(progFileName, "UTF-8")
       val json: JsValue = Json.parse(source.mkString)
+      source.close()
       val oProgram = parseProgram(json)
 
       val oAllStepsInAllSequences = readAllSequencesInProgram(oProgram)
