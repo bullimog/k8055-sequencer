@@ -1,5 +1,5 @@
 {
-  "name": "Wait five seconds",
+  "name": "Wait ten seconds",
   "description": "Wait for a brief pause",
   "steps": [
     {
@@ -7,7 +7,7 @@
       "_comment": "Wait for five seconds",
       "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
-      "value": 5
+      "value": 10
     }
   ]
 }

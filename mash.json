@@ -7,7 +7,8 @@
       "deviceId": "MO-1",
       "_comment": "Set mash thermostat temp",
       "eventType": "SET_VALUE",
-      "value": 172
+      "valuex": 172,
+      "value": 55
     },
     {
       "id": 2,

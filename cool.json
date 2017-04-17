@@ -10,38 +10,31 @@
     },
     {
       "id": 2,
-      "_comment": "circulate hot wort, to sterilise cooler",
+      "_comment": "circulate hot wort.",
       "deviceId": "DO-8",
       "eventType": "ON"
     },
     {
       "id": 3,
-      "_comment": "Wait for cooler to heat and sterilise",
-      "deviceId": "TI-1",
-      "eventType": "WAIT_TIME",
-      "value": 120
-    },
-    {
-      "id": 4,
       "_comment": "turn on cold water counter-flow",
       "deviceId": "DO-2",
       "eventType": "ON"
     },
     {
-      "id": 5,
+      "id": 4,
       "_comment": "Wait for boiler temperature to fall",
       "deviceId": "AI-2",
       "eventType": "WAIT_FALLING",
       "value": 48
     },
     {
-      "id": 6,
+      "id": 5,
       "_comment": "stop wort circulate",
       "deviceId": "DO-8",
       "eventType": "OFF"
     },
     {
-      "id": 7,
+      "id": 6,
       "_comment": "turn off cold water counter-flow",
       "deviceId": "DO-2",
       "eventType": "OFF"

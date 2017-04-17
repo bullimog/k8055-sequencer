@@ -1,0 +1,25 @@
+{
+  "name": "Sterilise cooler",
+  "description": "Let boiling water circulate through cooler, to sterilise it",
+  "steps": [
+    {
+      "id": 1,
+      "_comment": "close boiler valve",
+      "deviceId": "DO-5",
+      "eventType": "OFF"
+    },
+    {
+      "id": 2,
+      "_comment": "circulate hot wort, to sterilise cooler",
+      "deviceId": "DO-8",
+      "eventType": "ON"
+    },
+    {
+      "id": 3,
+      "_comment": "Wait for cooler to heat and sterilise",
+      "deviceId": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 120
+    }
+  ]
+}

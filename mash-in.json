@@ -1,6 +1,6 @@
 {
-  "name": "Wait for Next to be pressed",
-  "description": "Wait for a long pause or until Next is pressed",
+  "name": "Mash in",
+  "description": "## Add the grain to the mash tun ##",
   "steps": [
     {
       "id": 1,

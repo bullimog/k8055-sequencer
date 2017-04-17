@@ -20,14 +20,14 @@
       "_comment": "Set sparge pump on time",
       "deviceId": "ST-1",
       "eventType": "STROBE_ON_TIME",
-      "value": 7
+      "value": 3
     },
     {
       "id": 8,
       "_comment": "Set sparge pump off time",
       "deviceId": "ST-1",
       "eventType": "STROBE_OFF_TIME",
-      "value": 3
+      "value": 7
     },
     {
       "id": 9,
