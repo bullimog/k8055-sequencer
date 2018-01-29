@@ -29,6 +29,13 @@
     },
     {
       "id": 5,
+      "_comment": "Wait for backflow to re-prime boiler pump",
+      "deviceId": "TI-1",
+      "eventType": "WAIT_TIME",
+      "value": 10
+    },
+    {
+      "id": 6,
       "_comment": "close boiler valve",
       "deviceId": "DO-5",
       "eventType": "OFF"

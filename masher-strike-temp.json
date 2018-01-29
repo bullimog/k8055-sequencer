@@ -26,16 +26,14 @@
       "deviceId": "AI-1",
       "_comment": "Wait for strike temperature",
       "eventType": "WAIT_RISING",
-      "valuex": 181,
-      "value": 55
+      "value": 185
     },
     {
       "id": 5,
       "deviceId": "MO-1",
       "_comment": "Set mash thermostat to strike temperature",
       "eventType": "SET_VALUE",
-      "valuex": 181,
-      "value": 55
+      "value": 187
     },
     {
       "id": 6,

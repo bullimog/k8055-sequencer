@@ -19,7 +19,7 @@
       "_comment": "Wait for cooler to heat and sterilise",
       "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
-      "value": 120
+      "value": 180
     }
   ]
 }

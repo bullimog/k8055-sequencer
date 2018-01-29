@@ -7,8 +7,7 @@
       "deviceId": "MO-1",
       "_comment": "Set mash thermostat temp",
       "eventType": "SET_VALUE",
-      "valuex": 172,
-      "value": 55
+      "value": 174
     },
     {
       "id": 2,
@@ -27,7 +26,7 @@
       "_comment": "Wait for mash to complete",
       "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
-      "value": 120
+      "value": 3600
     },
     {
       "id": 5,
