@@ -22,19 +22,25 @@
     },
     {
       "id": 4,
-      "_comment": "Wait for valve to open",
+      "_comment": "Open mash valve",
+      "deviceId": "DO-4",
+      "eventType": "ON"
+    },
+    {
+      "id": 5,
+      "_comment": "Wait for valves to open",
       "deviceId": "TI-1",
       "eventType": "WAIT_TIME",
       "value": 3
     },
     {
-      "id": 5,
+      "id": 6,
       "_comment": "Enable sparge overflow/pump",
       "deviceId": "MO-3",
       "eventType": "ON"
     },
     {
-      "id": 6,
+      "id": 7,
       "_comment": "Wait for sparge water to sit on top of grain",
       "deviceId": "DI-1",
       "eventType": "WAIT_ON"

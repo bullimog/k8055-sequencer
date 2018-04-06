@@ -18,7 +18,7 @@
       "_comment": "Wait for boiler to reach temperature",
       "deviceId" : "AI-2",
       "eventType" : "WAIT_RISING",
-      "value" : 181
+      "value" : 186
     },{
       "id" : 4,
       "_comment": "Switch off the triac",
